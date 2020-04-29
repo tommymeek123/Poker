@@ -1,13 +1,11 @@
-#!/usr/bin/env python3
-
 """
-card.py
+poker.card.py
 
 This module contains a Card class that models a playing card.
 """
 
 __author__ = "Tommy Meek"
-__version__ = "(April, 2020)"
+__date__ = "(April, 2020)"
 
 
 class Card:
@@ -41,32 +39,37 @@ class Card:
       """ Mutator for the suit property """
       self.__suit = suit
 
-   def value(self, rank):
-      if rank is "Ace":
+   def value(self):
+      """
+      Determines the relative value of this card.
+
+      :return: The relative value of this card.
+      """
+      if self.rank is "Ace":
          value = 14
-      elif rank is "King":
+      elif self.rank is "King":
          value = 13
-      elif rank is "Queen":
+      elif self.rank is "Queen":
          value = 12
-      elif rank is "Jack":
+      elif self.rank is "Jack":
          value = 11
-      elif rank is "Ten":
+      elif self.rank is "Ten":
          value = 10
-      elif rank is "Nine":
+      elif self.rank is "Nine":
          value = 9
-      elif rank is "Eight":
+      elif self.rank is "Eight":
          value = 8
-      elif rank is "Seven":
+      elif self.rank is "Seven":
          value = 7
-      elif rank is "Six":
+      elif self.rank is "Six":
          value = 6
-      elif rank is "Five":
+      elif self.rank is "Five":
          value = 5
-      elif rank is "Four":
+      elif self.rank is "Four":
          value = 4
-      elif rank is "Three":
+      elif self.rank is "Three":
          value = 3
-      elif rank is "Two":
+      elif self.rank is "Two":
          value = 2
       return value
 
@@ -88,7 +91,7 @@ class Card:
       :param other: The card being compared to this card.
       :return: True if this card is of lower rank than the other card.
       """
-      return value(self.rank) < value(other.rank)
+      return self.value() < other.value()
 
    def __gt__(self, other):
       """
@@ -98,7 +101,7 @@ class Card:
       :param other: The card being compared to this card.
       :return: True if this card is of higher rank than the other card.
       """
-      return value(self.rank) > value(other.rank)
+      return self.value() > other.value()
 
    def __str__(self):
       """

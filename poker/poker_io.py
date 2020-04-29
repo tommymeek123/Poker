@@ -1,13 +1,11 @@
-#!/usr/bin/env python3
-
 """
-game_io.py
+poker.poker_io.py
 
 This module input and output for the Poker project.
 """
 
 __author__ = "Tommy Meek"
-__version__ = "(April, 2020)"
+__date__ = "(April, 2020)"
 
 
 def display(hand):

@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 
 """
-driver.py
+poker.driver.py
 
 This module acts as a driver for the Poker project.
 """
 
 __author__ = "Tommy Meek"
-__version__ = "(April, 2020)"
+__date__ = "(April, 2020)"
 
-from poker import go
+from game import go
 
 
 def main():

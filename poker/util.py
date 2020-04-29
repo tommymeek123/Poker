@@ -1,11 +1,11 @@
 """
 poker.util.py
 
-This module contains constants for use in the poker project.
+This module contains lists and constants for use in the poker project.
 """
 
 __author__ = "Tommy Meek"
-__date__ = "(April, 2020)"
+__date__ = "April, 2020"
 
 
 RANKS = ["Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", \

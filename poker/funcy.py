@@ -5,7 +5,7 @@ A library of funtional tools for any python project.
 """
 
 __author__ = "Tommy Meek"
-__date__ = "(April, 2020)"
+__date__ = "April, 2020"
 
 from itertools import product
 from random import sample

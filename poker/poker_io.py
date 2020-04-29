@@ -5,7 +5,7 @@ This module input and output for the Poker project.
 """
 
 __author__ = "Tommy Meek"
-__date__ = "(April, 2020)"
+__date__ = "April, 2020"
 
 
 def display(hand):

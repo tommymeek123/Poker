@@ -5,7 +5,7 @@ This module contains functions that model game logic for the Poker project.
 """
 
 __author__ = "Tommy Meek"
-__date__ = "(April, 2020)"
+__date__ = "April, 2020"
 
 import card
 import poker_io as io

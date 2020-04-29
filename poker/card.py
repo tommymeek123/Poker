@@ -5,10 +5,11 @@ This module contains a Card class that models a playing card.
 """
 
 __author__ = "Tommy Meek"
-__date__ = "(April, 2020)"
+__date__ = "April, 2020"
 
 
 class Card:
+""" A standard playing card. """
 
    def __init__(self, rank, suit):
       """ Constructor for the Card class"""

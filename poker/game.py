@@ -35,19 +35,71 @@ def deal(deck, num_cards):
       cards.append(deck.pop())
    return cards
 
-def has_set(size):
-   """
-   Determines if a hand has a set of cards of the same rank
+def pair(hand):
+   return funcy.has_dups(2)(hand)
 
-   :param size: The size of the set we are looking for.
-   :return: An inner function that detects a set of the given size.
-   """
-   def detect_set(hand):
-      #code
-      return False
-   return detect_set
+def two_pair(hand):
+   return hand[0] == hand[1] and hand[2] == hand[3] \
+       or hand[0] == hand[1] and hand[3] == hand[4] \
+       or hand[1] == hand[2] and hand[3] == hand[4]
 
-def go():
+def three_of_a_kind(hand):
+   return funcy.has_dups(3)(hand)
+
+def straight(hand):
+   is_straight = True
+   for i in range(util.HAND_SIZE - 1):
+      is_straight = is_straight and hand[i + 1].is_after(hand[i])
+   return is_straight
+
+def flush(hand):
+   return len(list(filter(
+      lambda card: card.suit is hand[0].suit, hand))) == util.HAND_SIZE
+
+def full_house(hand):
+   return hand[0] == hand[1] and hand[1] == hand[2] and hand[3] == hand[4] \
+       or hand[0] == hand[1] and hand[2] == hand[3] and hand[3] == hand[4]
+
+def four_of_a_kind(hand):
+   return funcy.has_dups(4)(hand)
+
+def straight_flush(hand):
+   return straight(hand) and flush(hand)
+
+def royal_flush(hand):
+   return straight_flush(hand) and hand[-1].value() == len(util.RANKS) - 1
+
+def get_score(hand):
+   if royal_flush(hand):
+      score = 9
+   elif straight_flush(hand):
+      score = 8
+   elif four_of_a_kind(hand):
+      score = 7
+   elif full_house(hand):
+      score = 6
+   elif flush(hand):
+      score = 5
+   elif straight(hand):
+      score = 4
+   elif three_of_a_kind(hand):
+      score = 3
+   elif two_pair(hand):
+      score = 2
+   elif pair(hand):
+      score = 1
+   else:
+      score = 0
+   return score
+
+def showdown(player_hand, comp_hand):
+   player_score = get_score(player_hand)
+   comp_score = get_score(comp_hand)
+   winning_hand = util.HANDS[max(player_score, comp_score)]
+   winner = "Player" if player_score > comp_score else "Computer"
+   return winner, winning_hand
+
+def play():
    """
    Controller for the game. Calls other functions in an appropriate order.
    """
@@ -58,5 +110,7 @@ def go():
    player_hand.sort()
    io.display(player_hand)
    muck = io.discard()
-   # showdown
-   io.endgame(player_hand, comp_hand, "Player", "Hand")
+   player_hand = funcy.remove_at(player_hand, muck)
+   player_hand += deal(deck, len(muck))
+   player_hand.sort()
+   io.endgame(player_hand, comp_hand, *showdown(player_hand, comp_hand))

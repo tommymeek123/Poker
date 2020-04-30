@@ -48,7 +48,7 @@ class Card:
 
       :return: The relative value of this card.
       """
-      return util.RANKS.index(self.rank) + 2
+      return util.RANKS.index(self.rank)
 
    def is_after(self, other):
       """

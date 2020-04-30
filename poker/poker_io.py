@@ -6,6 +6,9 @@ poker.poker_io.py
 This module handles input and output for the Poker project.
 """
 
+from functools import reduce
+import card
+
 
 def display(hand):
    """ Prints the contents of a single hand to the console.
@@ -16,6 +19,25 @@ def display(hand):
    for i in range(len(hand)):
       print("{}: {}".format(i + 1, hand[i]))
    print()
+
+def score_comment(hand):
+   """ Everyone loves snarky comments at the poker table.
+
+   This function evaluates the composition of a hand of cards and prints 
+   an (in)appropriate repsonse.
+
+   Args:
+      hand: The hand to be judged.
+   """
+   values = list(map(card.Card.value, hand))
+   ##############################
+   ## Reduce                   ##
+   ##############################
+   score = reduce(lambda x, y: x + y, values)
+   if score < 30:
+      print("Those are some pretty small cards.\n")
+   elif score > 45:
+      print("Whoa! Big cards!\n")
 
 def discard():
    """ Prompts the user for which cards they would like to discard.

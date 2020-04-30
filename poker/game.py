@@ -221,6 +221,7 @@ def play():
    comp_hand.sort()
    player_hand.sort()
    io.display(player_hand)
+   io.score_comment(player_hand)
    muck = io.discard()
    player_hand= [player_hand[i] for i in range(util.HAND_SIZE) if i not in muck]
    player_hand += deal(deck, len(muck))

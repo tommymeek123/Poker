@@ -18,5 +18,5 @@ the winner will be the player who has the highest value card. In this game, an
 Ace only counts as 'high' not 'low'. A straight may not be formed with Ace, Two, 
 Three, Four, Five.\
 
-The functions which fulfill the requirements of this project are in the 
-funcy.py module. They are labeled.
+All of the functions which fulfill the requirements of this project are 
+in the funcy.py module except for reduce which is in the poker_io module.

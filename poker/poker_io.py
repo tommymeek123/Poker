@@ -1,41 +1,44 @@
 """
+@author Tommy Meek
+@date April, 2020
+
 poker.poker_io.py
-
-This module input and output for the Poker project.
+This module handles input and output for the Poker project.
 """
-
-__author__ = "Tommy Meek"
-__date__ = "April, 2020"
 
 
 def display(hand):
-   """
-   Prints the contents of a single hand to the console.
+   """ Prints the contents of a single hand to the console.
 
-   :param hand: The hand to be printed.
+   Args:
+      hand: The hand to be printed.
    """
    for i in range(len(hand)):
       print("{}: {}".format(i + 1, hand[i]))
    print()
 
 def discard():
-   """
-   Prompts the user for which cards they would like to discard.
+   """ Prompts the user for which cards they would like to discard.
 
-   :return: A list of integers corresponding with the indices of the discards.
+   Returns:
+      A list of integers corresponding with the indices of the discards.
    """
-   muck = input("Which cards would you like to discard? (1-5): ")
-   return [int(d) - 1 for d in muck.split()]
+   muck = ["a"]
+   while any([not d.isdigit() or int(d) > 5 for d in muck]):
+      muck = input("Which cards would you like to discard? (1-5): ")
+      muck = muck.split()
+      if any([not d.isdigit() or int(d) > 5 for d in muck]):
+         print("Invalid input. Enter numbers (1-5) separated by spaces.\n")
+   return [int(d) - 1 for d in muck]
 
 def endgame(player_hand, comp_hand, winner, hand_type):
-   """
-   Prints the contents of both hands to the console then displays the winner 
-   along with the type of hand that won.
+   """ Displays both hands, the winner, and the type of hand that won.
 
-   :param player_hand: The player's hand.
-   :param comp_hand: The computer's hand.
-   :param winner: The contestant who won the hand.
-   :param hand_type: The type of hand that won.
+   Args:
+      player_hand: The player's hand.
+      comp_hand: The computer's hand.
+      winner: The contestant who won the hand.
+      hand_type: The type of hand that won.
    """
    print("Your hand:")
    display(player_hand)

@@ -1,11 +1,10 @@
 """
-poker.util.py
+@author Tommy Meek
+@date April, 2020
 
+poker.util.py
 This module contains lists and constants for use in the poker project.
 """
-
-__author__ = "Tommy Meek"
-__date__ = "April, 2020"
 
 """ All possible ranks of a playing card. """
 RANKS = ["Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", \

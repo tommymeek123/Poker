@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 
 """
-poker.driver.py
+@author Tommy Meek
+@date April, 2020
 
+poker.driver.py
 This module acts as a driver for the Poker project.
 """
-
-__author__ = "Tommy Meek"
-__date__ = "April, 2020"
 
 from game import play
 

@@ -7,9 +7,11 @@ This module contains a Card class that models a playing card.
 __author__ = "Tommy Meek"
 __date__ = "April, 2020"
 
+import util
+
 
 class Card:
-""" A standard playing card. """
+   """ A standard playing card. """
 
    def __init__(self, rank, suit):
       """ Constructor for the Card class"""
@@ -46,38 +48,20 @@ class Card:
 
       :return: The relative value of this card.
       """
-      if self.rank is "Ace":
-         value = 14
-      elif self.rank is "King":
-         value = 13
-      elif self.rank is "Queen":
-         value = 12
-      elif self.rank is "Jack":
-         value = 11
-      elif self.rank is "Ten":
-         value = 10
-      elif self.rank is "Nine":
-         value = 9
-      elif self.rank is "Eight":
-         value = 8
-      elif self.rank is "Seven":
-         value = 7
-      elif self.rank is "Six":
-         value = 6
-      elif self.rank is "Five":
-         value = 5
-      elif self.rank is "Four":
-         value = 4
-      elif self.rank is "Three":
-         value = 3
-      elif self.rank is "Two":
-         value = 2
-      return value
+      return util.RANKS.index(self.rank) + 2
+
+   def is_after(self, other):
+      """
+      Determines if this card's rank is one higher than that of the argument.
+
+      :param other: Another card being compared with this card.
+      :return: True if the rank is exactly one higher. False otherwise.
+      """
+      return self.value() - other.value() == 1
 
    def __eq__(self, other):
       """
-      'equals' function. Will be invoked when the '==' operator is used. 
-      Compares rank.
+      'Equals'. Invoked when the '==' operator is used. Compares rank.
 
       :param other: The card being compared to this card.
       :return: True if this card is of equal rank to the other card.
@@ -86,8 +70,7 @@ class Card:
 
    def __lt__(self, other):
       """
-      'Less than' function. Will be invoked when the '<' operator is used. 
-      Compares rank.
+      'Less than'. Invoked when the '<' operator is used. Compares rank.
 
       :param other: The card being compared to this card.
       :return: True if this card is of lower rank than the other card.
@@ -96,8 +79,7 @@ class Card:
 
    def __gt__(self, other):
       """
-      'Greater than' function. Will be invoked when the '>' operator is used. 
-      Compares rank
+      'Greater than'. Invoked when the '>' operator is used. Compares rank
 
       :param other: The card being compared to this card.
       :return: True if this card is of higher rank than the other card.
@@ -106,7 +88,7 @@ class Card:
 
    def __str__(self):
       """
-      'String' function. Will return a string representation of this card.
+      'String'. Will return a string representation of this card.
 
       :return: A string representation of this card.
       """
@@ -114,8 +96,8 @@ class Card:
 
    def __repr__(self):
       """
-      'Report' function. Will return a string representation of this card.
+      'Report'. Will return a string representation of this card.
 
       :return: A string representation of this card.
       """
-      return str(self)
+      return "rank: {}. suit: {}.".format(self.rank, self.suit)

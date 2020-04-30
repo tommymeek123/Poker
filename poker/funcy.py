@@ -41,17 +41,17 @@ def shuffle(*args):
    :param args: Any number of items or lists of items to be shuffled.
    :return: A list containing all subelements in random order.
    """
-   l = flatten(list(args))
-   return sample(l, len(l)) 
+   items = flatten(list(args))
+   return sample(items, len(items)) 
 
-# def fy_shuffle(deck):
-#    """
-#    Fischer-Yates shuffle.
+def fy_shuffle(items):
+   """
+   Fischer-Yates shuffle.
 
-#    :param deck: A deck of objects to be shuffled.
-#    :return: The shuffled deck.
-#    """
-#    for i in range(len(deck) - 1, 0, -1):
-#       j = random.randint(0, i)
-#       deck[i], deck[j] = deck[j], deck[i]
-#    return deck
+   :param items: A list of items to be shuffled.
+   :return: The shuffled list.
+   """
+   for i in range(len(items) - 1, 0, -1):
+      j = random.randint(0, i)
+      items[i], items[j] = items[j], items[i]
+   return items

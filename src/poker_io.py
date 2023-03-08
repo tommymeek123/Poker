@@ -23,16 +23,13 @@ def display(hand):
 def score_comment(hand):
    """ Everyone loves snarky comments at the poker table.
 
-   This function evaluates the composition of a hand of cards and prints 
+   This function evaluates the composition of a hand of cards and prints
    an (in)appropriate repsonse.
 
    Args:
       hand: The hand to be judged.
    """
    values = list(map(card.Card.value, hand))
-   ##############################
-   ## Reduce                   ##
-   ##############################
    score = reduce(lambda x, y: x + y, values)
    if score < 30:
       print("Those are some pretty small cards.\n")

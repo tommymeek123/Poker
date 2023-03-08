@@ -3,7 +3,7 @@
 @date April, 2020
 
 poker.game.py
-This module contains functions that model game logic for the Poker project. 
+This module contains functions that model game logic for the Poker project.
 A simple game of 5 Card Draw is played.
 """
 
@@ -32,7 +32,7 @@ def deal(deck, num_cards):
       A list containing the top few cards from the deck
    """
    cards = []
-   for i in range(num_cards):
+   for _ in range(num_cards):
       cards.append(deck.pop())
    return cards
 
@@ -173,9 +173,9 @@ def get_score(hand):
 def tiebreak(player_hand, comp_hand):
    """ Decides the winner of a hand if both hands have the same type.
 
-   This is accomplished by determining the hand with the highest high card. 
-   This is not in accordance with the standard rules of 5 Card Draw. This is 
-   due to the limited scope of this project. This function would need to be 
+   This is accomplished by determining the hand with the highest high card.
+   This is not in accordance with the standard rules of 5 Card Draw. This is
+   due to the limited scope of this project. This function would need to be
    more robust to accuratelyt model 5 Card Draw.
 
    Args:

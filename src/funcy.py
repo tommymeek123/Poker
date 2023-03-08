@@ -11,12 +11,6 @@ from itertools import product
 import random
 
 
-##############################
-## Pure Function            ##
-##############################
-##############################
-## Function as a parameter  ##
-##############################
 def exec_all(action, *args):
    """ Executes the specified function for every combination of arguments.
 
@@ -27,9 +21,6 @@ def exec_all(action, *args):
    Returns:
       A list containing the values returned by each function call.
    """
-   ##############################
-   ## List Comprehension       ##
-   ##############################
    return [action(*tup) for tup in product(*args)]
 
 def prop_match(prop, obj, lst):
@@ -43,12 +34,6 @@ def prop_match(prop, obj, lst):
    Returns:
       A list containing objects who share a property with the given object.
    """
-   ##############################
-   ## Filter                   ##
-   ##############################
-   ##############################
-   ## Lambda                   ##
-   ##############################
    return list(filter(lambda x: prop.fget(x) is prop.fget(obj), lst))
 
 def remove_dups(lst):
@@ -78,9 +63,6 @@ def dup_counts(prop, lst):
    Returns:
       A list of integers representing the size of partitions in the list.
    """
-   ##############################
-   ## Map                      ##
-   ##############################
    return list(map(len, remove_dups([prop_match(prop, x, lst) for x in lst])))
 
 def fy_shuffle(items):
@@ -98,10 +80,10 @@ def fy_shuffle(items):
    return items
 
 def has_dups(n):
-   """ Determines if a list has a specified number of duplicate entries. 
+   """ Determines if a list has a specified number of duplicate entries.
 
    For example, if 4 is passed as a parameter, this function will only return
-   true if an element is present at least 4 times in this list. Note: The 
+   true if an element is present at least 4 times in this list. Note: The
    list does not have to be sorted.
 
    Args:
@@ -110,9 +92,6 @@ def has_dups(n):
    Returns:
       An inner function that detects a n duplicate entries
    """
-   ##############################
-   ## Closure                  ##
-   ##############################
    def detect_dups(list):
       """ Detects whether a list has any elements duplicated n times.
 
@@ -122,30 +101,10 @@ def has_dups(n):
       Returns:
          True if any element is duplicated n times. False otherwise.
       """
-      ##############################
-      ## Recursion                ##
-      ##############################
       if len(list) < n:
          return False
       elif list[1:].count(list[0]) >= n - 1:
          return True
       else:
          return detect_dups(list[1:])
-   ##############################
-   ## Return a function        ##
-   ##############################
    return detect_dups
-
-# def list_sort(lst):
-#    """ Sorts the passed in list without side effects.
-
-#    Args:
-#       lst: The list to be sorted.
-
-#    Returns:
-#       A new list that is a copy of the original list but sorted.
-#    """
-#    cp = copy.copy(lst)
-#    new_list = []
-#    new_list.append(reduce(min, cp[x:-1])) for x in range(len(lst))
-#    return new_list
